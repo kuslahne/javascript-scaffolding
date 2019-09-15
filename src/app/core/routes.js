@@ -4,7 +4,7 @@ export default class Router {
   constructor() {
     this.root = null;
     this.useHash = true;
-    this.hash = '#!';
+    this.hash = '#';
     this.router = new Navigo(this.root, this.useHash, this.hash);
   }
 

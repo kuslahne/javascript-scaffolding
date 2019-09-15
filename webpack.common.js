@@ -26,6 +26,46 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { singleton: true }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false
+            }
+          }
+        ],
+        include: [
+          /(node_modules|bower_components)/,
+          path.resolve(src, 'styles/node_modules.css')
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { singleton: true }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: 'dashes',
+              localIdentName: '[path][name]__[local]'
+            }
+          }
+        ],
+        exclude: [
+          /(node_modules|bower_components)/,
+          path.resolve(src, 'styles/node_modules.css')
+        ]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
@@ -50,7 +90,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.js', '.scss', '.css'],
     modules: ['node_modules', 'src']
   }
 };

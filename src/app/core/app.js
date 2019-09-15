@@ -1,5 +1,5 @@
 import Router from './routes';
-import { Home, Contacts } from '../features';
+import { Home, Contacts, Exam } from '../features';
 import '../../styles/common.scss';
 
 const routes = {
@@ -8,6 +8,9 @@ const routes = {
   },
   '/contacts': () => {
     new Contacts('#root').load();
+  },
+  '/exam': () => {
+    new Exam('#root').load();
   }
 };
 
